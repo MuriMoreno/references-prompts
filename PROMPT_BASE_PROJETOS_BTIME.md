@@ -27,7 +27,7 @@ Tudo está dentro da pasta do projeto: [PASTAS].
 Regras:
 
 1. **O que está na fonte é para fazer.** Se uma planilha ou documento do cliente traz uma regra ou um dado, implemente. Não devolva como "decisão em aberto".
-2. **A fonte mais nova vence.** Uma planilha enviada depois substitui o fluxograma ou a planilha anterior no ponto em que divergem. Registre a troca em "Decisões técnicas".
+2. **A fonte mais nova vence.** Um insumo enviado depois substitui o anterior no ponto em que divergem. Registre a troca em "Decisões técnicas".
 3. **Leia tudo até o fim.** Todas as abas de cada planilha, todos os anexos. Antes de afirmar que algo "não está na documentação", procure de novo.
 4. **Só leve a [RESPONSÁVEL] o que a fonte não resolve:** lacuna real ou contradição dentro da mesma fonte. Leve sempre com **alternativas, impacto e uma recomendação**, e siga trabalhando no resto.
 5. **Nunca invente requisito.** Decisão técnica de baixo risco você toma e registra. Decisão de produto ou negócio fica em "Depende de mim".
@@ -48,9 +48,9 @@ Use esta stack, a menos que a VT diga outra coisa. **A base é sempre Python**, 
 - **E-mail:** Resend, chamado só pelo backend.
 - **Testes:** **pytest** no backend e nos robôs (com o banco de teste, sem tocar na produção); Vitest + Testing Library nas telas.
 - **Qualidade:** ruff e mypy no Python; ESLint e `tsc` no front.
-- **Scripts de banco** em `scripts/db/`: migrate, seed, verify, criar usuário de teste. Todo script que grava em produção é **idempotente**, tem modo `--simular` e preserva edição manual.
+- **Scripts de banco** para aplicar migrations, carregar dados, conferir o banco e criar usuários de teste. Todo script que grava em produção é **idempotente**, tem modo `--simular` e preserva edição manual.
 
-Arquitetura: regra de negócio em funções puras no backend Python (testáveis, sem banco e sem tela), usada pela API e pelos robôs; acesso a dados numa camada própria; no front, telas em `src/features` e componentes do design system em `src/ui`.
+Arquitetura: regra de negócio em funções puras no backend Python (testáveis, sem banco e sem tela), usada pela API e pelos robôs; acesso a dados numa camada própria; no front, telas separadas dos componentes do design system.
 
 ## 4. Perfis de acesso (padrão)
 
